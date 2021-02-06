@@ -59,13 +59,35 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (notePosition >= DataManager.notes.lastIndex){
+            val menuitem = menu?.findItem(R.id.action_next)
+            if (menuitem != null){
+                menuitem.icon = getDrawable(R.drawable.ic_block_white_24)
+                menuitem.isEnabled = false
+            }
+        }
+
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
+            R.id.action_next -> {
+                moveNext()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun moveNext() {
+        ++notePosition
+        this.displayNote()
+        invalidateOptionsMenu()
     }
 }

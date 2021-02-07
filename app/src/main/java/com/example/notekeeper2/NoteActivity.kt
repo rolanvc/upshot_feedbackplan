@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity() {
     var spinnerCourses: Spinner? = null;
     var noteText: TextView? = null;
     var noteTitle: TextView? = null;

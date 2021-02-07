@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteKeeper2">
         <activity
-            android:name=".NotesListActivity"
+            android:name=".NoteListActivity"
             android:label="@string/title_activity_notes_list"
             android:theme="@style/Theme.NoteKeeper2.NoActionBar">
             <intent-filter>

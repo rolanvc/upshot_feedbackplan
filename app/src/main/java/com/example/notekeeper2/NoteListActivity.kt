@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class NotesListActivity : AppCompatActivity() {
+class NoteListActivity : AppCompatActivity() {
     var listItems: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

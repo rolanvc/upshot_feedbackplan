@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     var spinnerCourses: Spinner? = null;
     var noteText: TextView? = null;
     var noteTitle: TextView? = null;
+    var positionView : TextView? = null;
 
     private var notePosition = POSITION_NOT_SET
 
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         this.spinnerCourses = findViewById(R.id.spinnerCourses)
         this.noteTitle = findViewById(R.id.textNoteTitle)
         this.noteText = findViewById(R.id.textNoteText)
+        this.positionView = findViewById(R.id.textPosition)
 
         val adapterCourses = ArrayAdapter<CourseInfo>(this,
             android.R.layout.simple_spinner_item,
@@ -35,9 +37,14 @@ class MainActivity : AppCompatActivity() {
 
         this.spinnerCourses?.adapter = adapterCourses
 
-        notePosition = intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOT_SET)
+        notePosition = savedInstanceState?.getInt(EXTRA_NOTE_POSITION, POSITION_NOT_SET) ?:
+                        intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOT_SET)
+
         if (notePosition != POSITION_NOT_SET){
             displayNote()
+        }else {
+            DataManager.notes.add(NoteInfo())
+            notePosition = DataManager.notes.lastIndex
         }
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
@@ -48,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         val note = DataManager.notes[notePosition]
         this.noteTitle?.setText(note.title)
         this.noteText?.setText(note.text)
+        this.positionView?.setText(notePosition.toString())
 
         val coursePosition = DataManager.courses.values.indexOf(note.course)
         this.spinnerCourses?.setSelection(coursePosition)
@@ -89,5 +97,23 @@ class MainActivity : AppCompatActivity() {
         ++notePosition
         this.displayNote()
         invalidateOptionsMenu()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveNote()
+    }
+
+    private fun saveNote() {
+        val note = DataManager.notes[notePosition]
+        note.title = this.noteTitle?.text.toString()
+        note.text = this.noteText?.text.toString()
+        note.course = this.spinnerCourses?.selectedItem as CourseInfo
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState?.putInt(EXTRA_NOTE_POSITION, notePosition)
+
     }
 }

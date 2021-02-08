@@ -11,10 +11,10 @@ import android.widget.Spinner
 import android.widget.TextView
 
 class NoteActivity : AppCompatActivity() {
-    var spinnerCourses: Spinner? = null;
-    var noteText: TextView? = null;
-    var noteTitle: TextView? = null;
-    var positionView : TextView? = null;
+    val spinnerCourses by lazy<Spinner>{findViewById(R.id.spinnerCourses) } ;
+    val noteText  by lazy<TextView>{ findViewById(R.id.textNoteText)}
+    val noteTitle  by lazy<TextView>{ findViewById(R.id.textNoteTitle)}
+    val positionView  by lazy<TextView>{ findViewById(R.id.textPosition)}
 
     private var notePosition = POSITION_NOT_SET
 
@@ -24,18 +24,13 @@ class NoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        this.spinnerCourses = findViewById(R.id.spinnerCourses)
-        this.noteTitle = findViewById(R.id.textNoteTitle)
-        this.noteText = findViewById(R.id.textNoteText)
-        this.positionView = findViewById(R.id.textPosition)
-
         val adapterCourses = ArrayAdapter<CourseInfo>(this,
             android.R.layout.simple_spinner_item,
             DataManager.courses.values.toList())
 
         adapterCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        this.spinnerCourses?.adapter = adapterCourses
+        this.spinnerCourses.adapter = adapterCourses
 
         notePosition = savedInstanceState?.getInt(EXTRA_NOTE_POSITION, POSITION_NOT_SET) ?:
                         intent.getIntExtra(EXTRA_NOTE_POSITION, POSITION_NOT_SET)
@@ -53,12 +48,12 @@ class NoteActivity : AppCompatActivity() {
 
     private fun displayNote() {
         val note = DataManager.notes[notePosition]
-        this.noteTitle?.setText(note.title)
-        this.noteText?.setText(note.text)
-        this.positionView?.setText(notePosition.toString())
+        this.noteTitle.setText(note.title)
+        this.noteText.setText(note.text)
+        this.positionView.setText(notePosition.toString())
 
         val coursePosition = DataManager.courses.values.indexOf(note.course)
-        this.spinnerCourses?.setSelection(coursePosition)
+        this.spinnerCourses.setSelection(coursePosition)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

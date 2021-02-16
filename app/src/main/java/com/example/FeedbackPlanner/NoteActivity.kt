@@ -14,7 +14,6 @@ class NoteActivity : AppCompatActivity() {
     val spinnerCourses by lazy<Spinner>{findViewById(R.id.spinnerCourses) } ;
     val noteText  by lazy<TextView>{ findViewById(R.id.textNoteText)}
     val noteTitle  by lazy<TextView>{ findViewById(R.id.textNoteTitle)}
-    val positionView  by lazy<TextView>{ findViewById(R.id.textPosition)}
 
     private var notePosition = POSITION_NOT_SET
 
@@ -50,7 +49,6 @@ class NoteActivity : AppCompatActivity() {
         val note = DataManager.notes[notePosition]
         this.noteTitle.setText(note.title)
         this.noteText.setText(note.text)
-        this.positionView.setText(notePosition.toString())
 
         val coursePosition = DataManager.courses.values.indexOf(note.course)
         this.spinnerCourses.setSelection(coursePosition)

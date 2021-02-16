@@ -26,7 +26,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Note Title"
+        android:hint="Title"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/spinnerCourses"
         app:layout_constraintStart_toStartOf="@+id/spinnerCourses"
@@ -39,19 +39,10 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Note Text"
+        android:hint="Details"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/spinnerCourses"
         app:layout_constraintStart_toStartOf="@+id/spinnerCourses"
         app:layout_constraintTop_toBottomOf="@+id/textNoteTitle" />
-
-    <TextView
-        android:id="@+id/textPosition"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="d"
-        app:layout_constraintEnd_toEndOf="@+id/textNoteText"
-        app:layout_constraintTop_toBottomOf="@+id/textNoteText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

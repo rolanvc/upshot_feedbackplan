@@ -1,6 +1,6 @@
-package com.example.notekeeper2
+package global.upshot.FeedbackPlanner
 
-data class CourseInfo (val courseid: String, val title:String) {
+data class CourseInfo (val courseid: String, val title:String, var done: Boolean=false) {
     override fun toString(): String {
         return title
     }

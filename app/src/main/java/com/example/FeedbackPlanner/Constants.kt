@@ -1,4 +1,4 @@
-package com.example.notekeeper2
+package global.upshot.FeedbackPlanner
 
 const val EXTRA_NOTE_POSITION = "EXTRA_NOTE_POSITION"
 

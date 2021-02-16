@@ -1,4 +1,4 @@
-package com.example.notekeeper2
+package global.upshot.FeedbackPlanner
 
 import android.content.Context
 import android.content.Intent

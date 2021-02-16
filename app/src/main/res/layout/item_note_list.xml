@@ -41,15 +41,25 @@
 
             <TextView
                 android:id="@+id/textTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="19dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Title"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/textCourse" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done?"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textCourse"
+                app:layout_constraintStart_toEndOf="@+id/textTitle"
+                app:layout_constraintTop_toBottomOf="@+id/textCourse" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

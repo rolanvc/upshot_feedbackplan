@@ -1,4 +1,4 @@
-package com.example.notekeeper2
+package com.example.FeedbackPlanner
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

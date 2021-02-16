@@ -1,4 +1,4 @@
-package com.example.notekeeper2
+package com.example.FeedbackPlanner
 
 import org.junit.Test
 

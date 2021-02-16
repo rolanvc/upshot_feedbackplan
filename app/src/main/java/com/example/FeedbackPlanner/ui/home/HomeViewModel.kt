@@ -1,4 +1,4 @@
-package com.example.notekeeper2.ui.home
+package com.example.FeedbackPlanner.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
